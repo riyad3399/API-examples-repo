@@ -48,8 +48,27 @@ const loadMeals = (searchText) => {
     fetch(url)
       .then(res => res.json())
       .then(data => displayMealsDetails(data.meals[0]))
+      .catch (error =>{
+          console.log(error);
+      })
   }
   
+/* 
+async await 
+
+const loadMealDetails2 = async (idMeal){
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        displayMealsDetails(data.meals[0]);
+    }
+    catch (error) {
+        console.log(error);
+    }
+   
+} */
+
   const displayMealsDetails = meal => {
     document.getElementById('mealDetailsLabel').innerText = meal.strMeal;
     const mealDetailsBody = document.getElementById('mealDetailsBody');
